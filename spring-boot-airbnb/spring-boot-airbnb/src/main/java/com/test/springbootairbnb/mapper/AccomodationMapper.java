@@ -2,12 +2,19 @@ package com.test.springbootairbnb.mapper;
 
 
 import java.util.List;
-import java.util.List;
-import com.test.springbootairbnb.percistence.entity.*;
-import com.test.springbootairbnb.dto.AccomodationDTO;
 
-@Mapper(componentModel="spring")
+import org.mapstruct.Mapper;
+
+import com.test.springbootairbnb.dto.AccomodationDTO;
+import com.test.springbootairbnb.dto.ReservationDTO;
+import com.test.springbootairbnb.percistence.entity.AccomodationEntity;
+import com.test.springbootairbnb.percistence.entity.ReservationEntity;
+
+import java.util.List;
+
+@Mapper
 public interface AccomodationMapper {
+	 AccomodationDTO toDto(AccomodationEntity entity);
 	
-	List<AccomodationDto> toDtoList(List<AccomodationEntity>):
+	 AccomodationEntity toEntity(AccomodationDTO dto);
 }

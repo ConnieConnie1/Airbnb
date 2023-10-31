@@ -32,4 +32,10 @@ public class AccomodationEntity{
     private String descrizione;
 	@Column(name="PREZZO_BASE_NOTTE")
     private int prezzoNotte;
+	
+	// METODI GETTER
+	public Object getIdAlloggio() {
+		
+		return null;
+	}
 }

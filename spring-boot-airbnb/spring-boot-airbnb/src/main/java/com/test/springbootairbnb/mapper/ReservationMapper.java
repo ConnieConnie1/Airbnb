@@ -1,13 +1,13 @@
 package com.test.springbootairbnb.mapper;
 
+import com.test.springbootairbnb.dto.ReservationDTO;
+import com.test.springbootairbnb.percistence.entity.ReservationEntity;
 
-import java.util.List;
-import java.util.List;
-import com.test.springbootairbnb.percistence.entity.*;
-import com.test.springbootairbnb.dto.AccomodationDTO;
-
-@Mapper(componentModel="spring")
 public interface ReservationMapper {
-	
-	List<ReservationDto> toDtoList(List<ReservationEntity>):
+	// converte a DTO
+	ReservationDTO toDto(ReservationEntity entity);
+
+	// concerte a Entità
+	ReservationEntity toEntity(ReservationDTO dto);
+
 }

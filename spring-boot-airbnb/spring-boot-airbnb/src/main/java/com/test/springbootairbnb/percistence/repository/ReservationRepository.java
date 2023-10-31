@@ -1,3 +1,7 @@
+package com.test.springbootairbnb.percistence.repository;
+
+import java.sql.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.test.springbootairbnb.percistence.entity.ReservationEntity;
