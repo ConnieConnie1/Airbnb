@@ -21,7 +21,7 @@ public class AccomodationController {
 	private AccomodationService accomodationService;
 	// Il controlle richiama solo la classe service
 
-	@GetMapping
+	@GetMapping("/allAccomodations")
 	public List<AccomodationDTO> getAllAccomodations(
 			@RequestParam(name = "region", required = false) String region,
 			@RequestParam(name = "city", required = false) String city,
@@ -33,7 +33,7 @@ public class AccomodationController {
 	}
 
 	// Restituisci una singola sistemazione in base all'ID
-	@GetMapping("/{ID}")
+	@GetMapping("/{ID}/accomodation")
 	public AccomodationDTO getAccomodationById(
 			@RequestParam(name = "idAccomodation", required = false) Long idAccomodation) {
 		if (idAccomodation != null) {

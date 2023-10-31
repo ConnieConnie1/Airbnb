@@ -18,7 +18,8 @@ public interface AccomodationRepository extends JpaRepository<AccomodationEntity
     List<AccomodationEntity> findByRegion(String region);
     
     // Metodo per cercare per ID del servizio
-    List<AccomodationEntity> findByServiceId(Long idService);
+    // List<AccomodationEntity> findByServizi(Long idService);
+    // Faremo con CUSTOM
     
     //Metodo per restituire tutti i campi  
     List<AccomodationEntity> findAll();

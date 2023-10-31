@@ -43,11 +43,11 @@ public class AccomodationService {
 			// Se specifico solo città, cerca sistemazioni con quelle caratteristiche
 			accomodationEntity.addAll(accomodationRepository.findByCity(city));
 
-		} else if (idService != null) {
+		}/* else if (idService != null) {
 			// Se specificato idService, cerca sistemazioni con quell'idService
 			accomodationEntity.addAll(accomodationRepository.findByServiceId(idService));
 
-		} else {
+		} */ else {
 			// Se i parametri non corrispondono a nessun caso specifico, restituisci tutte
 			// le sistemazioni
 			accomodationEntity.addAll(accomodationRepository.findAll());
