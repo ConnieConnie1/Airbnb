@@ -13,7 +13,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
 
      // ReservationRepository saveReservation(Date checkIn, Date checkOut, Integer numeroOspiti, String numeroTelefono);
 
-     Optional<ReservationEntity> findByIdReservation(Long idReservation);
+     Optional<ReservationEntity> findById(Long idReservation);
 
      // void deleteReservationById(Long reservationID);
 

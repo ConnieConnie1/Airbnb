@@ -33,9 +33,9 @@ public class AccomodationController {
 	}
 
 	// Restituisci una singola sistemazione in base all'ID
-	@GetMapping("/{ID}/accomodation")
+	@GetMapping("/{idAccomodation}")
 	public AccomodationDTO getAccomodationById(
-			@RequestParam(name = "idAccomodation", required = false) Long idAccomodation) {
+			@PathVariable(name = "idAccomodation", required = false) Long idAccomodation) {
 		if (idAccomodation != null) {
 			return accomodationService.getAccomodationById(idAccomodation);
 		} else { // se idAccomodation è null

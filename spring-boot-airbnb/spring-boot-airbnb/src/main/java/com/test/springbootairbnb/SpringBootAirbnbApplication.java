@@ -3,8 +3,7 @@ package com.test.springbootairbnb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages={
-"com.test.springbootairbnb.mapper"})
+@SpringBootApplication
 public class SpringBootAirbnbApplication {
 
 	public static void main(String[] args) {

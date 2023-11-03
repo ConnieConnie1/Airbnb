@@ -36,7 +36,7 @@ public class ServiziEntity{
     private boolean WIFI;
 	@Column(name="GIARDINO")
     private boolean giardino;
-	@Column(name="ANIMALI")
+	@Column(name="ANIMALI_AMMESSI")
     private boolean animali;
 	@Column(name="FORNO")
     private boolean forno;
