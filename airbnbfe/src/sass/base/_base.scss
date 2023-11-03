@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after { /*  Il pseudo-elemento consentono di inserire contenuto HTML prima/dopo il contenuto dell'elemento principale.*/
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    /*dimensioni complessive dell'elemento includeranno il padding e il bordo */
+}
+
+html {
+    font-size: 62.5%;;
+}
+
+body{
+    box-sizing: border-box;
+}

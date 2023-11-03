@@ -1,0 +1,13 @@
+html {
+    font-size: 10px; /*Importo la 'root' dimensione del font nel tag HTML, posso così usare dimensioni relative nel resto del file.*/
+} 
+
+/* Impostazioni font*/
+body {
+    font-family: 'Inter', sans-serif;
+     font-weight: 400;
+     font-size:  $default-font-size;
+     line-height: 1.7;
+     color: $color-grey-dark;
+     padding: 3rem;
+}

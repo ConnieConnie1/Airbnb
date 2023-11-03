@@ -1,0 +1,23 @@
+/* Navbar */
+.navbar {
+    max-height: 6rem;
+    display: flex;
+    border-bottom: 1px solid $color-grey-light-2;
+    justify-content: space-between;
+
+    /* Logo */
+    .header__logo {
+        max-height: 2.5rem;
+    }
+
+    /* Barra di ricerca */
+    &--middle {
+        display: flex;
+        background-color: $color-white;
+    }
+
+    /* Destra */
+    &--right {
+        display: flex;
+    }
+}
