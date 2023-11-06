@@ -1,7 +1,9 @@
 import './sass/main.scss';
-
-
 import Navbar from './components/Navbar';
+import Filters from './components/Filters';
+import Footer from './components/Footer';
+import Accomodations from './components/Accomodations';
+import Accomodation from './components/Accomodation';
 
 
 
@@ -11,8 +13,11 @@ function App() {
       {/* Navbar */}
       <Navbar />
       {/* Filters */}
+      <Filters />
       {/* Cards-Rentals */}
-      {/* footer */}
+      <Accomodations />
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

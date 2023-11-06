@@ -1,0 +1,26 @@
+.footer {
+   
+    background-color: $color-grey-light-2;
+    padding: 2rem;
+    font-size: 1.2rem;
+    border-top: $border-dark;
+    //position: sticky;
+   // bottom: 0;
+    // max-height: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+
+    &__icons {
+        font-size: 1.2rem;
+        color: $color-grey-light;
+        display: flex;
+        gap: .8rem;
+        :hover {
+        color: $color-primary;
+        }
+
+    }
+}

@@ -3,4 +3,20 @@
     padding: .2rem 1rem;
     border: none;
     cursor: pointer;
+    font-weight: 600;
+    border-right: 2px $color-grey-light-2 solid;
+}
+
+.btn-2{
+    font-weight: 600; 
+    background-color: transparent;
+    padding: 1rem 2rem;
+    
+    border: none;
+    cursor: pointer;
+    border-radius: 3.5rem;
+    text-align: center;
+    &:hover {
+        background-color: $color-grey-light-2;
+    }
 }
