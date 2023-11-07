@@ -18,17 +18,15 @@
 }
 .filter{
     display: flex;
-    flex-direction: column;
+   flex-direction: row;
     align-items: center;
     gap: .5rem;
     padding: 1rem;
     color: $color-grey-light;
     transition-duration: 200ms;
-    font-size: 1.2rem;
+    font-size: 2rem;
     
-    &__item--icon{
-        font-size: 4rem;
-    }
+   
 
 
     &:hover{

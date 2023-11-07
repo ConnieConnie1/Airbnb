@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets-immagini/logo.png';
 import { BiWorld, BiMenu,BiUser,BiSearch} from 'react-icons/bi';
 
 

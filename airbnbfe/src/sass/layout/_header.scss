@@ -4,22 +4,25 @@
     margin: auto 2rem;
     display: flex;
     justify-content: space-between;
-    padding: auto 2rem;
+    align-items: center;
+    //padding: auto 4rem;
     max-width: 90%;
-    border-bottom: 2px solid $color-grey-light-2;
+    // border-bottom: 2px solid $color-grey-light-2;
 
     /* Logo */
     .header__logo {
-        max-height: 2.5rem;
-        padding: auto 1rem;
+        max-height: 3rem;
+       
+        margin: 2rem 0;
     }
 
     /* Barra di ricerca */
     &--middle {
         display: flex;
         justify-content: space-between;
+      
         
-        padding: 1rem;
+       padding: 1rem;
           
         border: $border-light;
         border-radius: 3.5rem;
