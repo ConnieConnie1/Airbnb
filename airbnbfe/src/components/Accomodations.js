@@ -5,8 +5,10 @@ import { accomodationService } from "../../src/api.tsx";
 function AccomodationList() {
   const [accomodations, setAccomodations] = useState([]); // // Crea uno stato "accommodations" come array vuoto
 
+
+  // Uso useEffect per eseguire una richiesta GET tramite il mio service+metodo
   useEffect(() => {
-    accomodationService.getAllAccomodations() // una richiesta GET al tuo backend
+    accomodationService.getAllAccomodations() // una richiesta GET al backend
     .then( // richiesta successo
       response => {
         setAccomodations(response.data); // imposto lo stato con i dati ricevuti
@@ -18,21 +20,21 @@ function AccomodationList() {
     );
   }, []);
 
-  // // Mappa ogni annuncio di alloggio negli stati in un componente di card
-  return (
-    <div className='accomodation__list'> 
-      {accomodations.map((accomodation) => ( 
-        <Accomodation
-          key={accomodation.id}
-          title={accomodation.title} 
-          image={accomodation.image}
-          price={accomodation.price}
-          city={accomodation.city}
-          region={accomodation.region}
-        />
-      ))}
-    </div>
-  );
-}
+// Mappo ogni annuncio in una componente card
+return (
+  <div className='accomodation__list'>
+    {accomodations !== null && accomodations.map((accomodation) => (
+      <Accomodation
+        key={accomodation.id} 
+        nome={accomodation.nome}
+        // image={accomodation.image}
+        prezzoNotte={accomodation.prezzoNotte}
+        city={accomodation.city}
+        region={accomodation.region}
+      />
+    ))}
+  </div>
+);
+   }
 
 export default AccomodationList;

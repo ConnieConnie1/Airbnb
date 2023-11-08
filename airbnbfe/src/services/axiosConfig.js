@@ -7,6 +7,13 @@ const localBackendAxiosConfig = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     }
+
+    
 });
 
+
 export  {localBackendAxiosConfig};
+
+//Importando la libreria Axios (per la gestione delle richieste HTTP)
+// Definisce un oggetto di configurazione localBackendAxiosConfig
+// Imporso la base base url per richieste backend locale

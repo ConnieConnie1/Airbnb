@@ -1,12 +1,12 @@
 /* Navbar */
 .navbar {
     max-height: 6rem;
-    margin: auto 2rem;
+    //margin: auto 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     //padding: auto 4rem;
-    max-width: 90%;
+     max-width: 90%;
     // border-bottom: 2px solid $color-grey-light-2;
 
     /* Logo */
@@ -32,11 +32,13 @@
         }
        
         .search {
+            height: 4rem;
+            height: 4rem;
             background-color: $color-primary;
             color: $color-white;
-            padding: 0.8rem;
-            border-radius: 20rem;
-            margin-right: .2rem;
+            //padding: 0.8rem;
+            border-radius: 100rem;
+            margin-right: .5rem;
             outline: 0;
            
         }
@@ -72,7 +74,7 @@
 
 .input-1 {
     padding: 0.6rem 0.6rem;
-    width: 20rem;
+    // width: 20rem;
     outline: 0;
     border-radius: 50%;
     border-color: transparent;

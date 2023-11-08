@@ -22,3 +22,5 @@
       "@unicredit/styleguide"
     ],
   }
+
+  //configuarazione che specifica cosa includere durante la compilazione del progetto
