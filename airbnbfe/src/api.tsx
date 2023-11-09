@@ -1,3 +1,4 @@
+import { AccomodationModel } from './customTypse';
 import { localBackendAxiosConfig } from './services/axiosConfig'
 
 const accomodationService = {
@@ -6,28 +7,47 @@ const accomodationService = {
    
    
     getAllAccomodations: async (obj) => {
+
+     
+          try {
+            const response = await localBackendAxiosConfig.get('/accomodations/allAccomodations', { params: obj });
+            return {
+              data: response.data as AccomodationModel[],
+              final: true,
+            };
+          } catch (error) {
+            console.log(error);
+            return {
+              data: [],
+              final: true,
+            };
+          }
+        }
+      
+    
+    
      /* if (!obj) {
         obj.page = 1;
         obj.size = 1000;
       } */
-   
+   /*
       let output = {
-        data: null,
+        data: AccomodationModel[],
         /* error: false,
-        errorMessage: '', */
+        errorMessage: '', 
         final: false,
       }
    
        localBackendAxiosConfig.get('/accomodations/allAccomodations', { params: obj })
         .then(response => {
-          output.data = response.data;
+          output.data = response.data as AccomodationModel;
         }).catch((err) => {
           console.log(err)
       })
        
    
       return output;
-    }
+    }*/
 }
 export {accomodationService}
 
