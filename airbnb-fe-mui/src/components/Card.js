@@ -6,7 +6,20 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-import img from '../img/1-img.jpg'
+import img1 from '../img/1-img.jpg'
+import img2 from '../img/2-img.jpg'
+import img3 from '../img/3-img.jpg'
+import img4 from '../img/4-img.jpg'
+import img5 from '../img/5-img.jpg'
+import img6 from '../img/6-img.jpg'
+import img7 from '../img/7-img.jpg'
+import img8 from '../img/8-img.jpg'
+import img9 from '../img/9-img.jpg'
+import img10 from '../img/10-img.jpg'
+import img11 from '../img/11-img.jpg'
+import img12 from '../img/12-img.jpg'
+import img13 from '../img/13-img.jpg'
+import img14 from '../img/14-img.jpg'
 
 
 // Icone react
@@ -34,6 +47,7 @@ const AccomodationCard = ({ location }) => {
     return null;
   }
 
+  const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14] 
 
 
   return (
@@ -53,10 +67,10 @@ const AccomodationCard = ({ location }) => {
         <CardActionArea sx={{ mt: 2 }}>
         <CardMedia
           component="img"
-          src="https://picsum.photos/200"
+          src={images[id - 1]}
           alt={id}
           sx={{ borderRadius: 4, height: '200px' }}
-          style = {{ height: '200px'}}
+          style = {{ height: '300px'}}
         />
         <CardContent>
           <Typography component="h6" fontWeight="bold" > {nome}</Typography>
