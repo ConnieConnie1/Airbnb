@@ -1,0 +1,15 @@
+  /* Per mostrare le frecce solo in hover
+    */
+  .carouselCard .MuiMobileStepper-root {
+    opacity: 0;
+    transition: all ease 1000ms;
+  }
+
+  .carouselCard:hover .MuiMobileStepper-root {
+    opacity:1
+  }
+
+  .carouselCard:hover .MuiMobileStepper-dotActive {
+    background-color: #fff
+  }
+  /* Colore per i pallini attivi */

@@ -1,0 +1,26 @@
+{
+    "extends": "ts-config-single-spa",
+    "compilerOptions": {
+      "target": "es5",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "jsx": "react",
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "downlevelIteration": true
+    },
+    "include": [
+      "src/**/*"
+  , "src/services/axiosConfig.js"  ],
+    "exclude": [
+      "node_modules",
+      "**/typings",
+      "@unicredit/styleguide"
+    ],
+  }
+
+  //configuarazione che specifica cosa includere durante la compilazione del progetto

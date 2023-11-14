@@ -1,0 +1,9 @@
+{
+    "local": {
+      "CORE_URL": "http://localhost:8080/",   
+      "USE_MOCK": false,
+      "LOCALHOST_URL": "http://localhost:8080"  
+    }
+  } 
+
+  // 

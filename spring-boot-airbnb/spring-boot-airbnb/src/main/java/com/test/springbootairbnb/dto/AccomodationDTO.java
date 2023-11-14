@@ -23,5 +23,6 @@ public class AccomodationDTO {
 	private int numBagni;
 	private String descrizione;
 	private int prezzoNotte;
+	private String url;
 
 }

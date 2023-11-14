@@ -19,7 +19,7 @@ public class AccomodationController {
 
 	@Autowired
 	private AccomodationService accomodationService;
-	// Il controlle richiama solo la classe service
+	// Il controller richiama solo la classe service
 
 	@GetMapping("/allAccomodations")
 	public List<AccomodationDTO> getAllAccomodations(
