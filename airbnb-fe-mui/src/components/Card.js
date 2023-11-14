@@ -6,6 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
+import { Link } from 'react-router-dom';
+
 import img1 from '../img/1-img.jpg'
 import img2 from '../img/2-img.jpg'
 import img3 from '../img/3-img.jpg'
@@ -51,6 +53,8 @@ const AccomodationCard = ({ location }) => {
 
 
   return (
+<Link to={`/locations/${id}`}>
+
     <Box
       className="Card"
       sx={{
@@ -82,7 +86,8 @@ const AccomodationCard = ({ location }) => {
         
         </Card>
       </Box>
-  
+      
+      </Link>
   );
 };
 

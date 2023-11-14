@@ -10,6 +10,13 @@ const theme = createTheme({
       textTransform: "none",
       fontSize: 15,
     },
+    h1: {
+      fontSize: "2rem", // Adjust the size as needed
+    },
+    h2: {
+      fontSize: "1.1rem", // Adjust the size as needed
+      
+    },
   },
 
   palette: {
