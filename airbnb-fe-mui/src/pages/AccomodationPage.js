@@ -15,6 +15,8 @@ import LocationsCard from "../components/LocationsCard";
 import Footer from "../components/Footer";
 import MobileFooter from "../components/MobileFooter";
 import FooterMenu from "../components/FooterMenu";
+import ReservationCard from "../components/ReservationCard";
+
 import {
   displayOnDesktop,
   flexBetween,
@@ -63,6 +65,7 @@ import {
 } from "react-icons/pi";
 import { RiParkingLine } from "react-icons/ri";
 import { CiWifiOn } from "react-icons/ci";
+
 
 const locationsTab = [
   { id: 1, title: "Sea", icon: <PiWavesLight size={36} /> },
@@ -141,10 +144,9 @@ const AccomodationPage = () => {
         <Box>
           <Header />
         </Box>
-        <Grid container spacing={2} sx={{ marginX: 6 }}>
-          <Grid item xs={8}>
-            <Box mt={4} sx={{ marginX: 6 }}>
-              <Typography
+        <Box sx={{ marginX: 6 }}>
+        <Typography
+              sx={{mt: 4}}
                 variant="h1"
                 fontWeight="bold"
                 textTransform="sentenceCase"
@@ -159,6 +161,11 @@ const AccomodationPage = () => {
                 src={images[id - 1]}
                 alt={accommodationDetails.nome}
               />
+        </Box>
+        <Grid container spacing={2} sx={{ marginX: 6 }}>
+          <Grid item xs={8} sx={{pr: 4}}>
+            <Box mt={4}>
+              
 
               <Typography
                 variant="h2"
@@ -184,7 +191,7 @@ const AccomodationPage = () => {
                   pb: 4,
                   display: "flex",
                   alignItems: "flex-start",
-                  borderBottom: "1px solid #ddd",
+                  
                 }}
               >
                 <Avatar
@@ -205,8 +212,9 @@ const AccomodationPage = () => {
                   </Typography>
                 </Box>
               </Box>
+              <Divider />
 
-              <Box sx={{ pb: 4, borderBottom: "1px solid #ddd" }}>
+              <Box sx={{ pb: 4 }}>
                 <Typography
                   variant="h2"
                   fontWeight="bold"
@@ -223,7 +231,7 @@ const AccomodationPage = () => {
                   {accommodationDetails.descrizione}
                 </Typography>
               </Box>
-
+              <Divider />
               <Box sx={{ pb: 4 }}>
                 <Typography
                   variant="h2"
@@ -258,9 +266,18 @@ const AccomodationPage = () => {
                 >
                   View all amenities
                 </Button>
-                <Divider />
+               
               </Box>
-              <Box sx={{ pb: 4, borderBottom: "1px solid #ddd" }}>
+              
+            </Box>
+          </Grid>
+
+          <Grid sx={4}>
+           <ReservationCard/>
+          </Grid>
+        </Grid>
+        <Divider sx={{ pb: 4, marginX: 6 }} />
+        <Box sx={{ pb: 4, marginX: 6 }}>
                 <Typography
                   variant="h2"
                   fontWeight="bold"
@@ -280,23 +297,8 @@ const AccomodationPage = () => {
                     referrerpolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </CardMedia>
-                <Divider />
+                
               </Box>
-            </Box>
-          </Grid>
-
-          <Grid sx={4}>
-            <ButtonGroup
-              variant="contained"
-              aria-label="outlined primary button group"
-            >
-              <Button>One</Button>
-              <Button>Two</Button>
-              <Button>Three</Button>
-            </ButtonGroup>
-          </Grid>
-        </Grid>
-
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <FooterMenu />
         </Box>

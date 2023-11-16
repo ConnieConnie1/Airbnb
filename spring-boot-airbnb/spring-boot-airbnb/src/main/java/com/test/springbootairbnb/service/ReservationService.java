@@ -28,6 +28,8 @@ public class ReservationService {
 		
 		// Con Mapper converto l'entità in DTO
 		return  reservationMapper.toDto(savedReservation);
+		
+		// richiamo l'altro metodo per controllare se c'è già prenotazione, se mi ritorna, salvo la prenotazione
 		}
 	
     // gestire le operazioni legate alle prenotazioni
@@ -46,6 +48,10 @@ public class ReservationService {
 		if (entityDelete != null) {
 			reservationRepository.delete(entityDelete);
 		}
+		
+		//MEtodo per checkExistingReservation
+		// Controllo data inizio/fine
+		// return id dell'oggetto inserito, se non lo trova null
 		
 	}
 
