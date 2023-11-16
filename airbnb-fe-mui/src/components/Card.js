@@ -26,7 +26,6 @@ import img14 from '../img/14-img.jpg'
 
 // Icone react
 
-import { AiFillStar } from 'react-icons/ai';
 import { FaRegHeart } from 'react-icons/fa';
 import {
   flexBetween,
@@ -37,7 +36,7 @@ import {
   fixedBottom,
 } from '../themes/commonStyles';
 
-import './CarouselCard.css';
+
 
 
 

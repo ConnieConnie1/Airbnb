@@ -19,33 +19,52 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const ReservationCard = () => {
-  const { id } = useParams();
+const ReservationCard = ({id, prezzoNotte}) => {
+ 
   const [accommodationDetails, setAccommodationDetails] = useState(null);
-  const [arrivalDate, setArrivalDate] = useState(null);
-  const [departureDate, setDepartureDate] = useState(null);
-  const [numberOfNights, setNumberOfNights] = useState(0);
+  
+  const [arrivalDate, setArrivalDate] = useState(dayjs());
+  const [departureDate, setDepartureDate] = useState(dayjs());
+  
+  const [numberOfNights, setNumberOfNights] = useState(1);
   const [guestNum, setGuestNum] = useState(1);
 
-  const cleaningFee = 100;
-  const totalPrice = 150 * 3 + cleaningFee; // qui devo mettere variabili per prezzo notte e numero notti
+  const [totalPriceValue, setTotalPriceValue] = useState(0);
+  const [cleaningFee, setCleaningFee] = useState(100);
 
+  const [userEmail, setUserEmail] = useState('');
+
+  useEffect(() => {
+    const totalPriceValue = prezzoNotte * numberOfNights + cleaningFee;
+    setTotalPriceValue(totalPriceValue);
+  }, [prezzoNotte, numberOfNights, cleaningFee]);
+  
+ 
+
+
+  // Per aggiornare date arrivo e partenza del DatePicker, richiamano il calcolatore del numero di notti, così da aggiornare il calcolo
   const handleArrivalDateChange = (date) => {
     setArrivalDate(date);
+    calculateNumberOfNights(date, departureDate)
   };
 
   const handleDepartureDateChange = (date) => {
     setDepartureDate(date);
-
-    // Calcolo numero di notti
-    if (arrivalDate) {
-        const nightsTot = date.diff(arrivalDate, 'day');
-        setNumberOfNights(nightsTot);
-    }
+    calculateNumberOfNights(arrivalDate, date);
   };
+
+  // calcolo il numero di notti
+  const calculateNumberOfNights = (arrival, departure) => {
+    const nights = dayjs(departure).diff(arrival, 'day');
+    setNumberOfNights(nights);
+  }
 
   const handleGuestNumChange = (event) => {
     setGuestNum(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setUserEmail(event.target.value); // Aggiorna lo stato con il valore inserito dall'utente
   };
 
   useEffect(() => {
@@ -68,6 +87,30 @@ const ReservationCard = () => {
     fetchData();
   }, [id]);
 
+  // Per mandare i dati al BE, una volta che clicco bottone 'Reserve'
+  const handleReservation = async () => {
+    const reservationData = {
+      checkIn : arrivalDate.format('YYYY-MM-DD'),
+      checkOut: departureDate.format('YYYY-MM-DD'),
+      numeroOspiti: guestNum,
+      idAlloggio: id,
+      email: userEmail,
+      priceFinal: totalPriceValue,
+    };
+
+    try {
+      const response = await accomodationService.createReservation(reservationData);
+      if(response.success){
+        console.log('Prenotazione avvenuta', response.data);
+      } else {
+        console.error ('Errore durante la prenotazione', response.error)
+      }
+    } catch(error){
+      console.error ('Errore durante la prenotazione', error)
+    }
+    
+  };
+
   return (
     <Paper
       elevation={4}
@@ -88,7 +131,7 @@ const ReservationCard = () => {
         fontWeight="bold"
         textTransform="sentenceCase"
       >
-        € prezzo a notte!
+        € {prezzoNotte} night
       </Typography>
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -98,13 +141,17 @@ const ReservationCard = () => {
             label="Arrival"
             format="DD/MM/YYYY"
             defaultValue={dayjs()}
+            value={arrivalDate}
             slotProps={{ field: { shouldRespectLeadingZeros: true } }}
+            onChange={(date)=> handleArrivalDateChange(date)}
           />
           <DatePicker
             label="Departure"
             format="DD/MM/YYYY"
-            defaultValue={dayjs()}
+            defaultValue={dayjs().add(1, 'day')} // per aggiungere un giorno dopo, quella odierna
             slotProps={{ field: { shouldRespectLeadingZeros: true } }}
+            value = {departureDate}
+            onChange={(date) => handleDepartureDateChange(date)}
           />
         </Box>
       </LocalizationProvider>
@@ -128,11 +175,17 @@ const ReservationCard = () => {
 
           
         </FormControl>
-        <TextField id="outlined-basic" label="E-mail" variant="outlined" />
+        <TextField 
+        id="outlined-basic" 
+        label="E-mail" 
+        variant="outlined" 
+        value={userEmail}
+        onChange={handleEmailChange}/>
       </Box>
     
 
       <Button
+        onClick={handleReservation}
         variant="contained"
         color="secondary"
         fullWidth="true"
@@ -151,8 +204,8 @@ const ReservationCard = () => {
       <List sx={{ width: "100%" }}>
         <ListItem>
           <ListItemText
-            primary={`€ 150 x  ${numberOfNights} nights`} // ${pricePerNight} ${numberOfNights}
-            secondary={`€ ${150 * numberOfNights}`}
+            primary={`€ ${prezzoNotte} x  ${numberOfNights} nights`} 
+            secondary={`€ ${prezzoNotte * numberOfNights}`}
             sx={{ display: "flex", justifyContent: "space-between" }}
           />
         </ListItem>
@@ -168,7 +221,7 @@ const ReservationCard = () => {
         <ListItem>
           <ListItemText
             primary="Total"
-            secondary={`€ ${totalPrice}`}
+            secondary={`€ ${totalPriceValue}`}
             sx={{ display: "flex", justifyContent: "space-between" }}
           />
         </ListItem>

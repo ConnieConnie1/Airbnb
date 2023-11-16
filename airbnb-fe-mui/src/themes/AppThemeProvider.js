@@ -9,12 +9,18 @@ const theme = createTheme({
       fontFamily: "Raleway",
       textTransform: "none",
       fontSize: 15,
+      textDecoration: "none"
     },
     h1: {
       fontSize: "2rem", // Adjust the size as needed
+      fontWeight: 700,
     },
     h2: {
       fontSize: "1.1rem", // Adjust the size as needed
+      fontWeight: 600,
+    },
+    body1: {
+      fontSize: "1rem",
       
     },
   },
@@ -34,7 +40,7 @@ const theme = createTheme({
           px: 1,
         },
         variant: "subtitle2",
-        textTransform: "capitalize",
+        textDecoration: "none",
       },
     },
     MuiStack: {

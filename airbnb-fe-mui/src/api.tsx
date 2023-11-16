@@ -35,6 +35,22 @@ const accomodationService = {
       };
     }
   },
+
+  createReservation : async (reservationData) => {
+    try {
+      const response = await localBackendAxiosConfig.post ('reservations/create', reservationData);
+      return{
+        data: response.data,
+        success: true,
+      };
+    } catch (error){
+      console.error ('Errore durante la creazione della prenotazione', error);
+      return {
+        success: false,
+        errorMessage: error.message,
+      }
+    }
+  }
 };
 
 export { accomodationService };

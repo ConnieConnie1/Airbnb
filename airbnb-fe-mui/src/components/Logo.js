@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 // Icone
@@ -8,6 +10,7 @@ import { pink } from "@mui/material/colors";
 
 const Logo = () => {
   return (
+    <Link to="/" style={{ textDecoration: 'none' }}>
     <Box sx={flexCenter}>
       <FaAirbnb size={40} color={pink[500]} />
       <Typography
@@ -20,6 +23,7 @@ const Logo = () => {
         component="h3"
       >airbnb</Typography>
     </Box>
+    </Link>
   );
 };
 

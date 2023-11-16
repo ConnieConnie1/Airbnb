@@ -28,8 +28,10 @@ public class ReservationEntity {
 	@Column(name = "ID_ALLOGGIO")
 	private Long idAlloggio;
 	@Column(name = "ID_UTENTE")
-	private Long idUtente;
+	private String email;
 	@Column(name = "PREZZO_FINALE")
 	private Long priceFinal;
+	
+	
 
 }

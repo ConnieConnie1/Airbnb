@@ -11,6 +11,6 @@ public class ReservationDTO {
     private Integer numeroOspiti;
     private Long idAlloggio;
     private String email;
-    private String numeroTelefono;
+    private Long priceFinal;
    
 }

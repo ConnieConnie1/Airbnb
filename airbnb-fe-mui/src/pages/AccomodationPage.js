@@ -273,7 +273,9 @@ const AccomodationPage = () => {
           </Grid>
 
           <Grid sx={4}>
-           <ReservationCard/>
+           <ReservationCard
+           id ={accommodationDetails.id}
+           prezzoNotte ={accommodationDetails.prezzoNotte}/>
           </Grid>
         </Grid>
         <Divider sx={{ pb: 4, marginX: 6 }} />
