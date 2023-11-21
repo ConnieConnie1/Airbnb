@@ -1,9 +1,10 @@
 import { AccomodationModel } from './customTypse';
 import { localBackendAxiosConfig } from './services/axiosConfig';
 
+//  esecuzione richieste asincrone al backend utilizzando Axios 
 const accomodationService = {
-  /* CRUD TestCase */
-
+ 
+// Tutti gli alloggi
   getAllAccomodations: async (obj) => {
     try {
       const response = await localBackendAxiosConfig.get('/accomodations/allAccomodations', { params: obj });
@@ -20,6 +21,8 @@ const accomodationService = {
     }
   },
 
+
+// Alloggio specifico in base a ID
   getAccomodationById: async (id) => {
     try {
       const response = await localBackendAxiosConfig.get(`/accomodations/${id}`);
@@ -36,14 +39,15 @@ const accomodationService = {
     }
   },
 
-  createReservation : async (reservationData) => {
+// Creazione prenotazione
+  createReservation : async (reservationData) => { //input: informazioni sulla prenotazione
     try {
-      const response = await localBackendAxiosConfig.post ('reservations/create', reservationData);
-      return{
+      const response = await localBackendAxiosConfig.post ('reservations/create', reservationData); // richiesta backend POST
+      return{ // se la richiesta ha successo
         data: response.data,
         success: true,
       };
-    } catch (error){
+    } catch (error){ // Se fallisce
       console.error ('Errore durante la creazione della prenotazione', error);
       return {
         success: false,

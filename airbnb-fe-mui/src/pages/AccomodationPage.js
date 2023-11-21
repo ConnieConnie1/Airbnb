@@ -162,8 +162,8 @@ const AccomodationPage = () => {
                 alt={accommodationDetails.nome}
               />
         </Box>
-        <Grid container spacing={2} sx={{ marginX: 6 }}>
-          <Grid item xs={8} sx={{pr: 4}}>
+        <Grid container spacing={4} sx={{ marginX: 6 }}>
+          <Grid item xs={12} md={7}>
             <Box mt={4}>
               
 
@@ -272,7 +272,7 @@ const AccomodationPage = () => {
             </Box>
           </Grid>
 
-          <Grid sx={4}>
+          <Grid  item xs={12} md={5} sx={{ paddingRight: 2 }}>
            <ReservationCard
            id ={accommodationDetails.id}
            prezzoNotte ={accommodationDetails.prezzoNotte}/>

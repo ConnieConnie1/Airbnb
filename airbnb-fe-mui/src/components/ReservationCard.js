@@ -18,6 +18,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import ReservationConfirmation from "./ReservationConfirmation";
+
 
 const ReservationCard = ({id, prezzoNotte}) => {
  
@@ -33,6 +35,10 @@ const ReservationCard = ({id, prezzoNotte}) => {
   const [cleaningFee, setCleaningFee] = useState(100);
 
   const [userEmail, setUserEmail] = useState('');
+
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [reservationSuccess, setReservationSuccess] = useState(false);
+  const [backendResponse, setBackendResponse] = useState(null);
 
   useEffect(() => {
     const totalPriceValue = prezzoNotte * numberOfNights + cleaningFee;
@@ -73,10 +79,12 @@ const ReservationCard = ({id, prezzoNotte}) => {
         const response = await fetch(`/api/accommodations/${id}`);
         const data = await response.json();
         setAccommodationDetails(data);
-      } catch (error) {
+        // Chiamata ha successo, codice di stato HTTP 200
+      
+      } catch (error) { //Errore, chiamata fallita
         console.error("Errore nel prendere i dati dell'alloggio: ", error);
       }
-
+      
       try {
         const response = await accomodationService.getAccomodationById(id);
         setAccommodationDetails(response.data);
@@ -97,19 +105,32 @@ const ReservationCard = ({id, prezzoNotte}) => {
       email: userEmail,
       priceFinal: totalPriceValue,
     };
-
     try {
       const response = await accomodationService.createReservation(reservationData);
-      if(response.success){
-        console.log('Prenotazione avvenuta', response.data);
-      } else {
-        console.error ('Errore durante la prenotazione', response.error)
-      }
-    } catch(error){
-      console.error ('Errore durante la prenotazione', error)
-    }
+      console.log('Risposta del backend:', response); // Mostra la risposta del backend in console
     
-  };
+      setBackendResponse(response.data);
+    
+      if (response.data === '') {
+        console.log('Sovrapposizione date', response.data);
+        setShowConfirmation(true);
+        setReservationSuccess(false);
+      } else if (response.success) {
+        console.log('Prenotazione avvenuta', response.data);
+        setReservationSuccess(true);
+        setShowConfirmation(true);
+      } else {
+        console.error('Errore durante la prenotazione', response.error);
+        setReservationSuccess(false);
+      }
+    } catch (error) {
+      console.error('Errore durante la prenotazione', error);
+      setReservationSuccess(false);
+      setShowConfirmation(true);
+    }
+  }
+
+ 
 
   return (
     <Paper
@@ -120,9 +141,10 @@ const ReservationCard = ({id, prezzoNotte}) => {
         mt: 6,
         mr: 0,
         mb: 2,
-        width: "350px",
+        width: "380px",
         position: "sticky",
         top: 0,
+        borderRadius: 4,
       }}
     >
       <Typography
@@ -194,6 +216,11 @@ const ReservationCard = ({id, prezzoNotte}) => {
       >
         Reserve
       </Button>
+
+      {showConfirmation && (
+  <ReservationConfirmation success={reservationSuccess } response={backendResponse} /> //Se showConfirmation è true, allora renderizza ReservationConfirmation
+)}
+
       <Typography
         variant="h6"
         sx={{ textTransform: "sentencecase", textAlign: "center" }}

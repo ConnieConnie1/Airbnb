@@ -1,7 +1,6 @@
 package com.test.springbootairbnb.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +16,8 @@ import com.test.springbootairbnb.dto.ReservationDTO;
 import com.test.springbootairbnb.percistence.repository.*;
 import com.test.springbootairbnb.service.ReservationService;
 
+import exception.CustomReservationException;
+
 @RestController
 @RequestMapping("/reservations")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -31,16 +32,34 @@ public class ReservationController {
 	@Autowired
 	private ReservationRepository reservationRepository;
 	// inietto la repo
-
+	
+	
 	@PostMapping("/create")
 	// inserisco nel DB. Gestisco una richiesta HTTP POST.
 	public ReservationDTO insertReservation(
 			// RequestBody per ricevere i dati della prenotazione come parte del corpo della
 			// richiesta HTTP.
 			@RequestBody ReservationDTO reservationDTO) {
+	
+		if (reservationDTO == null) {
+			throw new CustomReservationException("Questa struttura è già stata prenotata per queste date");
+		}
+		
 		return reservationService.save(reservationDTO);
 		// Inserire nel DB tramite la service e il suo metodo
+		
+		
 	}
+
+//	@PostMapping("/create")
+//	// inserisco nel DB. Gestisco una richiesta HTTP POST.
+//	public ReservationDTO insertReservation(
+//			// RequestBody per ricevere i dati della prenotazione come parte del corpo della
+//			// richiesta HTTP.
+//			@RequestBody ReservationDTO reservationDTO) {
+//		return reservationService.save(reservationDTO);
+//		// Inserire nel DB tramite la service e il suo metodo
+//	}
 
 	// Restituisco la singola prenotazione in base all'ID
 	@GetMapping("/{idReservation}")
@@ -59,7 +78,7 @@ public class ReservationController {
 			// Cancella prenotazione in base all'ID fornito
 			reservationService.deleteById(idReservation);
 		} else {
-			throw new IllegalArgumentException("The given id must not be null");
+			throw new IllegalArgumentException("L'id non deve essere nullo");
 		}
 	}
 }
