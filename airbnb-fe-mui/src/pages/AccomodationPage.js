@@ -225,7 +225,7 @@ const AccomodationPage = () => {
                 </Typography>
                 <Typography
                   sx={{ mt: 4 }}
-                  component="body1"
+                  variant="body1"
                   textTransform="sentenceCase"
                 >
                   {accommodationDetails.descrizione}

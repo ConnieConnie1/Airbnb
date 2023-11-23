@@ -76,10 +76,10 @@ const AccomodationCard = ({ location }) => {
           style = {{ height: '300px'}}
         />
         <CardContent>
-          <Typography component="h6" fontWeight="bold" > {nome}</Typography>
-          <Typography component="h6"> {city}, {region}</Typography>
-          <Typography component="body1" fontWeight="bold"> {prezzoNotte} €</Typography>
-          <Typography component="body1" textTransform="lowercase">a notte</Typography>
+          <Typography variant="h6" fontWeight="bold"  textTransform= 'none' > {nome}</Typography>
+          <Typography variant="h6" textTransform= 'none'> {city}, {region}</Typography>
+          <Typography variant="body1" fontWeight="bold" textTransform= 'none' > {prezzoNotte} € a notte</Typography>
+  
           </CardContent>
         </CardActionArea>
         

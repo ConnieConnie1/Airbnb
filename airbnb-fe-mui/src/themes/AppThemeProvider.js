@@ -1,30 +1,16 @@
-import React from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey, pink } from '@mui/material/colors';
 
-// Stili personalizzati per Airbnb
 const theme = createTheme({
   typography: {
     allVariants: {
-      fontFamily: "Raleway",
-      textTransform: "none",
+      fontFamily: 'Raleway',
+      textTransform: 'none',
+      textDecoration: 'none',
       fontSize: 15,
-      textDecoration: "none"
-    },
-    h1: {
-      fontSize: "2rem", // Adjust the size as needed
-      fontWeight: 700,
-    },
-    h2: {
-      fontSize: "1.1rem", // Adjust the size as needed
-      fontWeight: 600,
-    },
-    body1: {
-      fontSize: "1rem",
-      
     },
   },
-
   palette: {
     primary: {
       main: grey[700],
@@ -39,8 +25,8 @@ const theme = createTheme({
         sx: {
           px: 1,
         },
-        variant: "subtitle2",
-        textDecoration: "none",
+        variant: 'subtitle2',
+        textTransform: 'capitalize',
       },
     },
     MuiStack: {
@@ -50,40 +36,40 @@ const theme = createTheme({
           py: 1,
         },
         spacing: 2,
-        direction: "row",
+        direction: 'row',
       },
     },
     MuiPaper: {
-        defaultProps: {
-            elevation:0
-        }
+      defaultProps: {
+        elevation: 0,
+      },
     },
     MuiLink: {
-        defaultProps:{
-            sx:{
-                color: theme => theme.palette.primary.main
-            },
-            underline: 'none'
-        }
+      defaultProps: {
+        sx: {
+          color: (theme) => theme.palette.primary.main,
+        },
+        underline: 'none',
+      },
     },
-    MuiButton:{
+    MuiButton: {
+      defaultProps: {
         size: 'small',
         p: 0,
-        disableRipple: true
+        disableRipple: true,
+      },
+      variant: 'text',
     },
-    variants: 'text', 
+    MuiTab: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
   },
-  MuiTab: {
-    defaultProps:{
-        defaultProps:{
-            disableRipple: 'true'
-        }
-    }
-  }
 });
 
 const AppThemeProvider = (prop) => {
-  return <ThemeProvider theme={theme}> {prop.children}</ThemeProvider>;
+  return <ThemeProvider theme={theme}> {prop.children} </ThemeProvider>;
 };
 
 export default AppThemeProvider;

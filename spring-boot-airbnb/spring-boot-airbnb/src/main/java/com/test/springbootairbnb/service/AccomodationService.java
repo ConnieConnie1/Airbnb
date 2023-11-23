@@ -22,36 +22,14 @@ public class AccomodationService {
 	@Autowired
 	private AccomodationMapper accomodationMapper;
 
-	public List<AccomodationDTO> getAccomodations(String region, String city, Long idService) {
-		List<AccomodationEntity> accomodationEntity = new ArrayList<>();
-        List<AccomodationDTO> accomodationDTO = new ArrayList<>();
+	public List<AccomodationDTO> getAccomodations(String region, String city, Integer numMaxOspiti, Integer numLetti, Integer numBagni, Integer prezzoNotte, Boolean cucina, Boolean parcheggio, Boolean balcone, Boolean frigorifero, Boolean wifi, Boolean giardino, Boolean animaliAmmessi, Boolean forno, Boolean asciugacapelli, Boolean tv, Boolean lavatrice, Boolean ariacondizionata, Boolean spiaggia, Boolean vistaMontagna) {
+		
+		
+		List<AccomodationEntity> accomodationEntity = accomodationRepository.searchByFilter(region, city, numMaxOspiti, numLetti, numBagni, prezzoNotte, cucina, parcheggio, balcone, frigorifero, wifi, giardino, animaliAmmessi, forno, asciugacapelli, tv, lavatrice, ariacondizionata, spiaggia, vistaMontagna);
+        
+		List<AccomodationDTO> accomodationDTO = new ArrayList<>();
 
-		if (region == null && city == null && idService == null) {
-
-			// Se nessun parametro specificato,
-			// Aggiungo lista find all
-			accomodationEntity.addAll(accomodationRepository.findAll());
-
-		} else if (region != null && city != null) {
-			// Se specificati region e città, cerca sistemazioni con quelle caratteristiche
-			accomodationEntity.addAll(accomodationRepository.findByRegionAndCity(region, city));
-		} else if (region != null) {
-			// Se specificato solo regione, cerca sistemazioni con quelle caratteristiche
-			accomodationEntity.addAll(accomodationRepository.findByRegion(region));
-
-		} else if (city != null) {
-			// Se specifico solo città, cerca sistemazioni con quelle caratteristiche
-			accomodationEntity.addAll(accomodationRepository.findByCity(city));
-
-		}/* else if (idService != null) {
-			// Se specificato idService, cerca sistemazioni con quell'idService
-			accomodationEntity.addAll(accomodationRepository.findByServiceId(idService));
-
-		} */ else {
-			// Se i parametri non corrispondono a nessun caso specifico, restituisci tutte
-			// le sistemazioni
-			accomodationEntity.addAll(accomodationRepository.findAll());
-		}
+		
 		 // mappare la lista di Entity in lista di DTO utilizzando l'accomodation Mapper (toDtoList)
         for (AccomodationEntity entity : accomodationEntity) {
             AccomodationDTO dto = accomodationMapper.toDto(entity);

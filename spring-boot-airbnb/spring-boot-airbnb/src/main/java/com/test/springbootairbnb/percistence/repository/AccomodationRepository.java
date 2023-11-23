@@ -5,7 +5,7 @@ import java.util.List;
 import com.test.springbootairbnb.percistence.entity.AccomodationEntity;
 
 
-public interface AccomodationRepository extends JpaRepository<AccomodationEntity, Long>{
+public interface AccomodationRepository extends JpaRepository<AccomodationEntity, Long>, AccomodationRepositoryCustom{
 
     // Dichiaro il metodo per cercare per regione e città, gli passo parametri, mi deve restituire una lista
     // è un metodo astratto, non ci sono le graffe. 
@@ -23,5 +23,7 @@ public interface AccomodationRepository extends JpaRepository<AccomodationEntity
     
     //Metodo per restituire tutti i campi  
     List<AccomodationEntity> findAll();
+    
+    
 
 } 

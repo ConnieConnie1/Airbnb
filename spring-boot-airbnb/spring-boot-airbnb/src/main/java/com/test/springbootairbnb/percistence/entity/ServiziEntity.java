@@ -33,11 +33,11 @@ public class ServiziEntity{
 	@Column(name="FRIGORIFERO")
     private boolean frigorifero;
 	@Column(name="WIFI")
-    private boolean WIFI;
+    private boolean wifi;
 	@Column(name="GIARDINO")
     private boolean giardino;
 	@Column(name="ANIMALI_AMMESSI")
-    private boolean animali;
+    private boolean animaliAmmessi;
 	@Column(name="FORNO")
     private boolean forno;
 	@Column(name="ASCIUGACAPELLI")
