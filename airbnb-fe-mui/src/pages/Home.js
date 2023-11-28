@@ -1,4 +1,5 @@
 import React from "react";
+import {useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "../App.css";
 
@@ -17,6 +18,8 @@ import { displayOnDesktop } from "../themes/commonStyles";
 import AccomodationPage from "../pages/AccomodationPage";
 
 function Home() {
+  const [accomodations, setAccomodations] = useState([]); 
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -29,7 +32,7 @@ function Home() {
       >
         <Box>
           <Header />
-          <OptionsFilter />
+          <OptionsFilter setAccomodations={setAccomodations}/>
         </Box>
         <Box
           sx={{
@@ -41,7 +44,7 @@ function Home() {
           }}
         >
           <Container maxWidth="xl" sx={{ mb: 3 }}>
-            <LocationsCard />
+            <LocationsCard accomodations={accomodations}/>
             <Box
               sx={{
                 display: { xs: "flex", md: "none" },

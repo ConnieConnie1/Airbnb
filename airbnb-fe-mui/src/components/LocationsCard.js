@@ -7,11 +7,31 @@ import AccomodationCard from './Card';
 
 
 
-const LocationsCard = () => {
-  const [accomodations, setAccomodations] = useState([]); // // Crea uno stato "accommodations" come array vuoto
+const LocationsCard = ({accomodations}) => {
+  //const [accomodations, setAccomodations] = useState([]); // // Crea uno stato "accommodations" come array vuoto
+ 
+  const [allAccomodations, setAllAccomodations] = useState([]);
+
+  useEffect(() => {
+    accomodationService
+      .getAllAccomodations() // una richiesta GET al backend
+      .then(
+        // richiesta successo
+        (response) => {
+          setAllAccomodations(response.data); // imposto lo stato con i dati ricevuti
+        }
+      )
+      .catch(
+        //errore nella richiesta
+        (error) => {
+          console.error("Error getting data: ", error); // messaggio in console
+        }
+      );
+  }, [accomodations]);
+  const showFilteredAccomodations = accomodations && accomodations.length > 0;
 
   // Uso useEffect per eseguire una richiesta GET tramite il mio service+metodo
-  useEffect(() => {
+  /* useEffect(() => {
     accomodationService
       .getAllAccomodations() // una richiesta GET al backend
       .then(
@@ -26,20 +46,26 @@ const LocationsCard = () => {
           console.error("Error getting data: ", error); // messaggio in console
         }
       );
-  }, []);
+  }, []); */
 
   // Mappo ogni annuncio in una componente card
   return (
     <Box sx={{ mx: 2 }}>
     <Grid container rowSpacing={3} columnSpacing={3}>
-      {accomodations.map((location) => {
-        return (
-          <Grid key={location.id} item xs={12} sm={4} md={4} lg={3}>
-            <AccomodationCard location={location} />
-          </Grid>
-        );
-      })}
-    </Grid>
+        {showFilteredAccomodations ? (
+          accomodations.map((location) => (
+            <Grid key={location.id} item xs={12} sm={4} md={4} lg={3}>
+              <AccomodationCard location={location} />
+            </Grid>
+          ))
+        ) : (
+          allAccomodations.map((location) => (
+            <Grid key={location.id} item xs={12} sm={4} md={4} lg={3}>
+              <AccomodationCard location={location} />
+            </Grid>
+          ))
+        )}
+      </Grid>
   </Box>
   );
 }
