@@ -43,7 +43,7 @@ import {
 
 
 const AccomodationCard = ({ location }) => {
-  const { id, nome, region, city, prezzoNotte, url } = location;
+  const { id, name, region, city, pricePerNight, url } = location;
   if (!location) {
     return null;
   }
@@ -76,9 +76,9 @@ const AccomodationCard = ({ location }) => {
           style = {{ height: '300px'}}
         />
         <CardContent>
-          <Typography variant="h6" fontWeight="bold"  textTransform= 'none' > {nome}</Typography>
+          <Typography variant="h6" fontWeight="bold"  textTransform= 'none' > {name}</Typography>
           <Typography variant="h6" textTransform= 'none'> {city}, {region}</Typography>
-          <Typography variant="body1" fontWeight="bold" textTransform= 'none' > {prezzoNotte} € a notte</Typography>
+          <Typography variant="body1" fontWeight="bold" textTransform= 'none' > {pricePerNight} € a notte</Typography>
   
           </CardContent>
         </CardActionArea>

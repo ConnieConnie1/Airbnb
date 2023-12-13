@@ -14,15 +14,15 @@ import lombok.Setter;
 public class AccomodationDTO {
 
 	private Long id;
-	private String nome;
+	private String name;
 	private String region;
 	private String city;
 	private int hostID;
-	private int numMaxOspiti;
-	private int numLetti;
-	private int numBagni;
-	private String descrizione;
-	private int prezzoNotte;
+	private int maxNumGuests;
+	private int numBeds;
+	private int numBathrooms;
+	private String description;
+	private int pricePerNight;
 	private String url;
 
 }

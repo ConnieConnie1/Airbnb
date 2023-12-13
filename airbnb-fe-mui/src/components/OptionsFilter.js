@@ -46,7 +46,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { accomodationService } from "../api";
 
-// Dati dei filtri-icone/descrizione
+// Dati dei filtri-icone
 const locationsTab = [
   { id: 1, title: "Sea", icon: <PiWavesLight size={22} /> },
   { id: 2, title: "Kitchen", icon: <PiCookingPotLight size={22} /> },
@@ -175,23 +175,23 @@ const OptionsFilter = ({setAccomodations}) => {
   const handleShowAccomodations = () => {
     // Dati da inviare al Backend, raccolti in oggetto filters
     const filters = {
-      numMaxOspiti: guests,
-      numLetti: beds,
-      numBagni: bathrooms,
-      cucina: kitchenCheck,
-      parcheggio: parkingCheck,
-      balcone: balconyCheck,
-      frigorifero: fridgeCheck,
+      maxNumGuests: guests,
+      numBeds: beds,
+      numBathrooms: bathrooms,
+      kitchen: kitchenCheck,
+      parking: parkingCheck,
+      balcony: balconyCheck,
+      fridge: fridgeCheck,
       wifi: wifiCheck,
-      giardino: gardenCheck,
-      animaliAmmessi: animalsCheck,
-      forno: ovenCheck,
-      asciugacapelli: hairdryerCheck,
+      garden: gardenCheck,
+      animalsAdmitted: animalsCheck,
+      oven: ovenCheck,
+      hairdryer: hairdryerCheck,
       tv: tvCheck,
-      lavatrice: washingmachineCheck,
-      ariacondizionata: airconditioningCheck,
-      spiaggia: seaCheck,
-      vistaMontagna: mountainCheck
+      washingmachine: washingmachineCheck,
+      airconditioning: airconditioningCheck,
+      sea: seaCheck,
+      mountain: mountainCheck
   };
     
   handleClose(); // Chiudi la modale
@@ -519,28 +519,28 @@ const handleClose = (event, reason) => {
 }
 
 const services = [
-  { title: 'cucina', year: 1994 },
-  { title: 'parcheggio', year: 1972 },
-  { title: 'balcone', year: 1974 },
-  { title: 'frigorifero', year: 2008 },
+  { title: 'kitchen', year: 1994 },
+  { title: 'parking', year: 1972 },
+  { title: 'balcony', year: 1974 },
+  { title: 'fridge', year: 2008 },
   { title: 'wifi', year: 1957 },
-  { title: "giardino", year: 1993 },
-  { title: 'animaliAmmessi', year: 1994 },
+  { title: "garden", year: 1993 },
+  { title: 'animalsAdmitted', year: 1994 },
   {
-    title: 'forno',
+    title: 'oven',
     year: 2003,
   },
-  { title: 'asciugacapelli', year: 1966 },
+  { title: 'hairdryer', year: 1966 },
   { title: 'tv', year: 1999 },
   {
-    title: 'lavatrice',
+    title: 'washingmachine',
     year: 2001,
   },
   {
-    title: 'ariacondizionata',
+    title: 'airconditioning',
     year: 1980,
   },
-  { title: 'spiaggia', year: 1994 },
+  { title: 'sea', year: 1994 },
   { title: 'montagna', year: 2010 },
  
 ];

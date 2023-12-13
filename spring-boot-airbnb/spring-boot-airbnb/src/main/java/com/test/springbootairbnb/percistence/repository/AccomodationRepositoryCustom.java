@@ -2,31 +2,31 @@ package com.test.springbootairbnb.percistence.repository;
 
 import java.util.List;
 
-import com.test.springbootairbnb.percistence.entity.AccomodationEntity;
+import com.test.springbootairbnb.percistence.entity.Accomodation;
 
 public interface AccomodationRepositoryCustom {
 	// QUERY CUSTOM CHE ritorna lista di Accomodation
 	
-	List<AccomodationEntity> searchByFilter(
+	List<Accomodation> searchByFilter(
 			String region, 
 			String city, 
-			Integer numMaxOspiti, 
-			Integer numLetti, 
-			Integer numBagni, 
-			Integer prezzoNotte,
-			Boolean cucina, 
-			Boolean parcheggio, 
-			Boolean balcone, 
-			Boolean frigorifero, 
+			Integer maxNumGuests, 
+			Integer numBeds, 
+			Integer numBathrooms, 
+			Integer priceByNight,
+			Boolean kitchen, 
+			Boolean parking, 
+			Boolean balcony, 
+			Boolean fridge, 
 			Boolean wifi, 
-			Boolean giardino, 
-			Boolean animaliAmmessi, 
-			Boolean forno, 
-			Boolean asciugacapelli,
+			Boolean garden, 
+			Boolean animalsAdmitted, 
+			Boolean oven, 
+			Boolean hairdryer,
 			Boolean tv,
-			Boolean lavatrice,
-			Boolean ariacondizionata,
-			Boolean spiaggia,
-			Boolean vistaMontagna
+			Boolean washingmachine,
+			Boolean airconditioning,
+			Boolean sea,
+			Boolean mountains
 			); 
 }

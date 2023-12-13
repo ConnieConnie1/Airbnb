@@ -16,7 +16,7 @@ public class ReservationDTO {
 	
     private Date checkIn;
     private Date checkOut;
-    private Integer numeroOspiti;
+    private Integer numGuests;
     private Long idAlloggio;
     private String email;
     private Long priceFinal;

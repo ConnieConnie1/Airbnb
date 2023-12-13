@@ -3,15 +3,15 @@ package com.test.springbootairbnb.mapper;
 import org.mapstruct.Mapper;
 
 import com.test.springbootairbnb.dto.ReservationDTO;
-import com.test.springbootairbnb.percistence.entity.ReservationEntity;
+import com.test.springbootairbnb.percistence.entity.Reservation;
 
 @Mapper
 public abstract class ReservationMapper {
 	
 	// Converte a DTO
-	public abstract ReservationDTO toDto(ReservationEntity entity);
+	public abstract ReservationDTO toDto(Reservation entity);
 
 	// converte a Entità
-	public abstract ReservationEntity toEntity(ReservationDTO dto);
+	public abstract Reservation toEntity(ReservationDTO dto);
 
 }

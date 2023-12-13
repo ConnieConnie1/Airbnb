@@ -21,7 +21,7 @@ import Select from '@mui/material/Select';
 import ReservationConfirmation from "./ReservationConfirmation";
 
 
-const ReservationCard = ({id, prezzoNotte}) => {
+const ReservationCard = ({id, pricePerNight}) => {
  
   const [accommodationDetails, setAccommodationDetails] = useState(null);
   
@@ -41,9 +41,9 @@ const ReservationCard = ({id, prezzoNotte}) => {
   const [backendResponse, setBackendResponse] = useState(null);
 
   useEffect(() => {
-    const totalPriceValue = prezzoNotte * numberOfNights + cleaningFee;
+    const totalPriceValue = pricePerNight * numberOfNights + cleaningFee;
     setTotalPriceValue(totalPriceValue);
-  }, [prezzoNotte, numberOfNights, cleaningFee]);
+  }, [pricePerNight, numberOfNights, cleaningFee]);
   
  
 
@@ -153,7 +153,7 @@ const ReservationCard = ({id, prezzoNotte}) => {
         fontWeight="bold"
         textTransform="sentenceCase"
       >
-        € {prezzoNotte} night
+        € {pricePerNight} night
       </Typography>
 
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -231,8 +231,8 @@ const ReservationCard = ({id, prezzoNotte}) => {
       <List sx={{ width: "100%" }}>
         <ListItem>
           <ListItemText
-            primary={`€ ${prezzoNotte} x  ${numberOfNights} nights`} 
-            secondary={`€ ${prezzoNotte * numberOfNights}`}
+            primary={`€ ${pricePerNight} x  ${numberOfNights} nights`} 
+            secondary={`€ ${pricePerNight * numberOfNights}`}
             sx={{ display: "flex", justifyContent: "space-between" }}
           />
         </ListItem>

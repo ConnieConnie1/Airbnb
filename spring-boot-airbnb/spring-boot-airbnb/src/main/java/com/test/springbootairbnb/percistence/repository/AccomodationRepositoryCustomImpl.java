@@ -6,8 +6,8 @@ import java.util.Objects;
 
 import org.springframework.stereotype.Repository;
 
-import com.test.springbootairbnb.percistence.entity.AccomodationEntity;
-import com.test.springbootairbnb.percistence.entity.ServiziEntity;
+import com.test.springbootairbnb.percistence.entity.Accomodation;
+import com.test.springbootairbnb.percistence.entity.Services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -29,24 +29,24 @@ public class AccomodationRepositoryCustomImpl implements AccomodationRepositoryC
 // Quindi serve per eseguire operazioni CRUD e interagire col DB
 	
 	@Override
-	public List<AccomodationEntity> searchByFilter(String region, String city, Integer numMaxOspiti, Integer numLetti,
-			Integer numBagni, Integer prezzoNotte, Boolean cucina, Boolean parcheggio, Boolean balcone, Boolean frigorifero,
-			Boolean wifi, Boolean giardino, Boolean animaliAmmessi, Boolean forno, Boolean asciugacapelli, Boolean tv, Boolean lavatrice, Boolean ariacondizionata, Boolean spiaggia, Boolean vistaMontagna) {
+	public List<Accomodation> searchByFilter(String region, String city, Integer numGuests, Integer numBeds,
+			Integer numBathrooms, Integer pricePerNight, Boolean kitchen, Boolean parking, Boolean balcony, Boolean fridge,
+			Boolean wifi, Boolean garden, Boolean animalsAdmitted, Boolean oven, Boolean hairdryer, Boolean tv, Boolean washingmachine, Boolean airconditiong, Boolean sea, Boolean mountains) {
 		
 //Criteria Builder: oggetto che costruisce la query (da EntityManager)
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		
 // CriteriaQuery: specifica su quale tabella fare query (da Criteria Builder)
-		CriteriaQuery <AccomodationEntity> cq = cb.createQuery(AccomodationEntity.class);
+		CriteriaQuery <Accomodation> cq = cb.createQuery(Accomodation.class);
 
 // Oggetto root: da quale classe del codice recupero info (da Criteria Query)
-		Root <AccomodationEntity> root =  cq.from(AccomodationEntity.class);
+		Root <Accomodation> root =  cq.from(Accomodation.class);
 		
 // Predicate: per 
 		List <Predicate> predicates = new ArrayList<Predicate>();
 
 // Oggetto JOIN: dichiaro quali sono le due entity da collegare e da root, collego il nome dei servizi che ho dichiarato in AccomodationEntity
-		Join<AccomodationEntity, ServiziEntity> join = root.join("servizi");
+		Join<Accomodation, Services> join = root.join("services");
 		
 
 		
@@ -60,73 +60,74 @@ public class AccomodationRepositoryCustomImpl implements AccomodationRepositoryC
 		if (city != null) {
 			predicates.add(cb.equal(root.get("city"), city ));
 		}
-		if (numMaxOspiti != null) {
-			predicates.add(cb.equal(root.get("numMaxOspiti"), numMaxOspiti ));
+		if (numGuests != null) {
+			predicates.add(cb.equal(root.get("numMaxOspiti"), numGuests ));
 		}
-		if (numLetti != null) {
-			predicates.add(cb.equal(root.get("numLetti"), numLetti ));
+		if (numBeds != null) {
+			predicates.add(cb.equal(root.get("numLetti"), numBeds ));
 		}
-		if (numBagni != null) {
-			predicates.add(cb.equal(root.get("numBagni"), numBagni ));
+		if (numBathrooms != null) {
+			predicates.add(cb.equal(root.get("numBagni"), numBathrooms ));
 		}
-		if (prezzoNotte != null) {
-			predicates.add(cb.equal(root.get("prezzoNotte"), prezzoNotte ));
+		if (pricePerNight != null) {
+			predicates.add(cb.equal(root.get("prezzoNotte"), pricePerNight ));
 		}
 // Questi altri filtri sono su un'altra tabella rispetto alloggi (quindi va fatta una JOIN)
 		// Invece di root, uso join che ho creato
 		
-		if (Objects.nonNull(cucina)) {
-			predicates.add(cb.equal(join.get("cucina"), cucina ));
+		if (Objects.nonNull(kitchen)) {
+			predicates.add(cb.equal(join.get("cucina"), kitchen ));
 		}
-		if (Objects.nonNull(parcheggio)) {
-			predicates.add(cb.equal(join.get("parcheggio"), parcheggio ));
+		if (Objects.nonNull(parking)) {
+			predicates.add(cb.equal(join.get("parcheggio"), parking ));
 		}
-		if (Objects.nonNull(balcone)) {
-			predicates.add(cb.equal(join.get("balcone"), balcone ));
+		if (Objects.nonNull(balcony)) {
+			predicates.add(cb.equal(join.get("balcone"), balcony ));
 		}
-		if (Objects.nonNull(frigorifero)) {
-			predicates.add(cb.equal(join.get("frigorifero"), frigorifero ));
+		if (Objects.nonNull(fridge)) {
+			predicates.add(cb.equal(join.get("frigorifero"), fridge ));
 		}
 		if (Objects.nonNull(wifi)) {
 			predicates.add(cb.equal(join.get("wifi"), wifi ));
 		}
-		if (Objects.nonNull(giardino)) {
-			predicates.add(cb.equal(join.get("giardino"), giardino ));
+		if (Objects.nonNull(garden)) {
+			predicates.add(cb.equal(join.get("giardino"), garden ));
 		}
-		if (Objects.nonNull(animaliAmmessi)) {
-			predicates.add(cb.equal(join.get("animaliAmmessi"), animaliAmmessi ));
+		if (Objects.nonNull(animalsAdmitted)) {
+			predicates.add(cb.equal(join.get("animaliAmmessi"), animalsAdmitted ));
 		}
-		if (Objects.nonNull(forno)) {
-			predicates.add(cb.equal(join.get("forno"), forno));
+		if (Objects.nonNull(oven)) {
+			predicates.add(cb.equal(join.get("forno"), oven));
 		}
-		if (Objects.nonNull(asciugacapelli)) {
-			predicates.add(cb.equal(join.get("asciugacapelli"), asciugacapelli ));
+		if (Objects.nonNull(hairdryer)) {
+			predicates.add(cb.equal(join.get("asciugacapelli"), hairdryer ));
 		}
 		if (Objects.nonNull(tv)) {
 			predicates.add(cb.equal(join.get("tv"), tv ));
 		}
-		if (Objects.nonNull(lavatrice)) {
-			predicates.add(cb.equal(join.get("lavatrice"), lavatrice ));
+		if (Objects.nonNull(washingmachine)) {
+			predicates.add(cb.equal(join.get("lavatrice"), washingmachine ));
 		}
-		if (Objects.nonNull(ariacondizionata)) {
-			predicates.add(cb.equal(join.get("ariacondizionata"), ariacondizionata ));
+		if (Objects.nonNull(airconditiong)) {
+			predicates.add(cb.equal(join.get("ariacondizionata"), airconditiong ));
 		}
-		if (Objects.nonNull(spiaggia)) {
-			predicates.add(cb.equal(join.get("spiaggia"), spiaggia ));
+		if (Objects.nonNull(sea)) {
+			predicates.add(cb.equal(join.get("spiaggia"), sea ));
 		}
-		if (Objects.nonNull(vistaMontagna)) {
-			predicates.add(cb.equal(join.get("vistaMontagna"), vistaMontagna ));
+		if (Objects.nonNull(mountains)) {
+			predicates.add(cb.equal(join.get("vistaMontagna"), mountains ));
 		}
 		
 		
 		cq.where(predicates.stream().toArray(Predicate[]::new));
 		// Questa è la query
 		
-		TypedQuery<AccomodationEntity> query = em.createQuery(cq);
+		TypedQuery<Accomodation> query = em.createQuery(cq);
 		//Sta creando la select, contatta il DB
 		 
-		List<AccomodationEntity> result = query.getResultList();
+		List<Accomodation> result = query.getResultList();
 		
+		// to DO da fare la paginazione
 		return result;
 		
 		

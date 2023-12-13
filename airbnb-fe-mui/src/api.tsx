@@ -7,7 +7,7 @@ const accomodationService = {
 // Tutti gli alloggi
   getAllAccomodations: async (obj) => {
     try {
-      const response = await localBackendAxiosConfig.get('/accomodations/allAccomodations', { params: obj });
+      const response = await localBackendAxiosConfig.get('/accomodations', { params: obj });
       return {
         data: response.data as AccomodationModel[],
         final: true,
@@ -42,7 +42,7 @@ const accomodationService = {
 // Creazione prenotazione
   createReservation : async (reservationData) => { //input: informazioni sulla prenotazione
     try {
-      const response = await localBackendAxiosConfig.post ('reservations/create', reservationData); // richiesta backend POST
+      const response = await localBackendAxiosConfig.post ('reservations', reservationData); // richiesta backend POST
       return{ // se la richiesta ha successo
         data: response.data,
         success: true,
@@ -54,8 +54,39 @@ const accomodationService = {
         errorMessage: error.message,
       }
     }
-  }
+  },
+
+// Delete prenotazione
+
+deleteReservation: async (reservationData) => {
+  try {
+    const { idAlloggio, email, checkIn, checkOut } = reservationData;
+
+    const url = `reservations/${idAlloggio}/deleteReservation`;
+    const queryParams = new URLSearchParams({
+      email: email,
+      checkIn: checkIn,
+      checkOut: checkOut,
+    }).toString();
+    const fullURL = `${url}?${queryParams}`;
+    console.log('Full URL:', fullURL);
+
+    const response = await localBackendAxiosConfig.delete(url, queryParams);
+      console.log("Risposta del server: ", response);
+      return {
+        data: response.data,
+        success: true,
+      };
+    } catch (error) {
+      console.error('Errore durante la cancellazione della prenotazione', error);
+      return {
+        success: false,
+        errorMessage: error.message,
+      };
+    }
+  },
 };
+
 
 export { accomodationService };
 

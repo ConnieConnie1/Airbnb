@@ -13,7 +13,7 @@ import {
 import { RiParkingLine } from "react-icons/ri";
 import { CiWifiOn } from "react-icons/ci";
 
-//Dati dei filtri: id, nome e icona
+//Dati dei filtri: id, name e icona
 export const LocationsTab = [
     { id: 1, title: "Sea", icon: <PiWavesLight size={24}/> },
     { id: 2, title: "Kitchen", icon: <PiCookingPotLight size={24}/> },

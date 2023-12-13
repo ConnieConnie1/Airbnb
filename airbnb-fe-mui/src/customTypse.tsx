@@ -1,13 +1,13 @@
 export type AccomodationModel = {
     id: number
-    nome: string
+    name: string
     region: string
     city: string
     hostID: number   //TODO: date
-    numMaxOspiti: number
-    numLetti: number   //TODO: date
-    numBagni: number
-    descrizione: number
-    prezzoNotte: number
+    maxNumGuests: number
+    numBeds: number   //TODO: date
+    numBathrooms: number
+    description: number
+    pricePerNight: number
    
   }
